@@ -1,0 +1,13 @@
+{
+  "name": "vue3-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1运行时和编译时.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node 2统一错误处理.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+  <!--组件疑问 全局注册和局部注册-->
+  <div id="app">
+    <div>{{count}}</div>
+    <!-- {{searchText}}
+    
+    <custom-input v-model="searchText"></custom-input> -->
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const {
+      createApp,
+      computed,
+      watchEffect,
+      ref
+    } = Vue
+    const app = createApp({
+      setup(props) {
+        const count = ref(0)
+        const str = ref('w')
+        const stop = watchEffect(() => {
+          console.log(1, count.value, str.value)
+          count.value = 100
+        })
+        // 停止了响应式监听
+        // stop()
+        setTimeout(() => {
+          count.value = 10
+          str.value = "z"
+        }, 1000)
+        return {
+          count
+        }
+      }
+    })
+    // app.component('custom-input', {
+    //   props: ['modelValue'],
+    //   emits: ['update:modelValue'],
+    //   template: `
+    //           <input
+    //           :value="modelValue"
+    //           @input="$emit('update:modelValue', $event.target.value)"
+    //           >
+    //       `,
+    // })
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
